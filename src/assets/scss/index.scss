@@ -1,0 +1,173 @@
+// 变量
+@import './var.scss';
+
+// 按钮默认样式
+.el-button,
+::v-deep().el-button--mini {
+  height: 26px;
+  min-height: 26px;
+  padding: 0 15px;
+}
+
+// 竖直布局
+.flex-column {
+  display: flex;
+  flex-flow: column;
+}
+
+// flex 布局
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// 设置下默认图标的样式 font-awesome
+// 所有一 fa- 开头的样式
+[class*='fa'] {
+  cursor: pointer;
+  outline: none;
+}
+
+// 表格样式
+.el-table {
+  tr:nth-last-child(1) td {
+    border-bottom: none;
+  }
+  .el-table__fixed-right-patch {
+    border-bottom: none;
+  }
+  .cell {
+    font-size: 12px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+  }
+  td {
+    color: #000;
+  }
+  th {
+    .cell {
+      color: #181818;
+      padding: 0 10px;
+    }
+
+    &.is-leaf {
+      background: #f8f8f8;
+      border-bottom: none;
+    }
+  }
+  .el-table__body-wrapper {
+    height: 100%;
+  }
+  ::v-deep() .preview-button {
+    width: 33px;
+    .fa {
+      color: $default-color2;
+      &:hover {
+        color: $default-color2-hover;
+      }
+    }
+  }
+}
+
+// 分页样式
+.el-pagination {
+  .el-pagination__sizes .el-input {
+    width: 86px;
+  }
+
+  .el-pagination__jump .el-input {
+    width: 40px;
+  }
+  &.is-background {
+    .btn-next,
+    .btn-prev,
+    .el-pager li {
+      margin: 0 10px;
+      background: rgb(255, 255, 255);
+      border: 1px solid rgb(235, 235, 235);
+      color: #c7c7cc;
+      border-radius: 4px;
+    }
+    .el-pager li {
+      margin: 0;
+      border-right: none;
+      border-radius: 0;
+      &:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+      &:last-child {
+        border-right: 1px solid rgb(235, 235, 235);
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+    }
+    .el-pager li:not(.disabled).active {
+      background: rgb(232, 240, 252);
+      color: #4d9bda;
+    }
+  }
+}
+
+// element-plus el-row 和 el-col 会自带 margin 与 padding。
+.el-row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  .el-col {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+
+// 这个是默认的搜索框样式，默认是248，可调整
+.default-search-input {
+  @extend .w248;
+  height: 24px;
+  line-height: 24px;
+
+  .el-input__inner {
+    height: 24px;
+    background: rgb(254, 254, 254);
+    border: 1px solid rgb(194, 195, 196);
+    border-radius: 4px;
+  }
+}
+
+// 查询按钮样式
+.default-search-button {
+  width: 40px;
+  height: 24px;
+  border: 1px solid #55acf1;
+  color: #55acf1;
+  padding: 0;
+  border-radius: 4px;
+  min-height: 24px;
+}
+
+// 默认表格布局
+.default-table-content {
+  @extend .flex-column;
+  .el-table {
+    flex: 1;
+    ::v-deep() .cell {
+      .el-button {
+        padding: 0;
+      }
+    }
+  }
+  .el-pagination {
+    height: 45px;
+    flex-shrink: 0;
+    text-align: right;
+    padding-top: 10px;
+  }
+}
+
+// 保存按钮默认样式
+.el-button--mini.default-save-button {
+  width: 62px;
+  padding: 0;
+  height: 30px;
+  line-height: 30px;
+}

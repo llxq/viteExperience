@@ -4,7 +4,7 @@
  * @Author: chendf
  * @Date: 2021-04-10 20:32:01
  * @LastEditors: chendf
- * @LastEditTime: 2021-04-12 16:59:19
+ * @LastEditTime: 2021-04-15 15:43:17
 -->
 <template>
     <div class="senior-design-container">
@@ -14,30 +14,42 @@
         </el-header>
         <el-container>
             <!-- 左侧控件列表 -->
-            <el-aside width="200px">
+            <el-aside width="250px">
               <component-list></component-list>
             </el-aside>
             <el-container>
                 <!-- 控件布局区域 -->
-                <el-main>Main</el-main>
+                <el-main>
+                  <component-main></component-main>
+                </el-main>
             </el-container>
             <!-- 右侧控件属性 -->
-            <el-aside width="200px">Aside</el-aside>
+            <el-aside width="250px">
+              <component-attrs></component-attrs>
+            </el-aside>
         </el-container>
         <!-- 下面控件导航 -->
-        <el-footer>Footer</el-footer>
+        <el-footer height="45px">
+          <component-nav></component-nav>
+        </el-footer>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import seniorDesignHender from '@/components/design/modules/header.vue'
-import componentList from '@/components/design/modules/component-list.vue'
+import componentList from '@components/design/modules/component-list.vue'
+import componentMain from '@components/design/modules/component.vue'
+import componentAttrs from '@components/design/modules/component-attrs.vue'
+import componentNav from '@components/design/modules/component-nav.vue'
 export default defineComponent({
     name: "index",
     components: {
         seniorDesignHender,
-        componentList
+        componentList,
+        componentMain,
+        componentAttrs,
+        componentNav
     },
     setup (props, {emit}) {
         // 修改页面名字
@@ -56,41 +68,24 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .senior-design-container {
-    .el-header {
+    @extend .wh100p;
+    @extend .flex-column;
+    & > .el-header {
         line-height: 45px;
     }
+    & > .el-container {
+      overflow: hidden;
+      background-color: $design-bgc;
+      padding: 8px;
+      .el-aside {
+        background-color: $design-bgc;
+        padding-right: 8px;
+        @extend .wh100p;
+      }
+      .el-aside:last-child {
+        padding-left: 8px;
+        padding-right: 0;
+      }
+    }
 }
- .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
-
-  .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-    line-height: 200px;
-  }
-
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    line-height: 160px;
-  }
-
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-
-  .el-container:nth-child(5) .el-aside,
-  .el-container:nth-child(6) .el-aside {
-    line-height: 260px;
-  }
-
-  .el-container:nth-child(7) .el-aside {
-    line-height: 320px;
-  }
   </style>

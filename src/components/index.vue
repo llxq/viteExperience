@@ -4,7 +4,7 @@
  * @Author: chendf
  * @Date: 2021-04-08 13:41:59
  * @LastEditors: chendf
- * @LastEditTime: 2021-04-12 16:57:51
+ * @LastEditTime: 2021-04-22 16:28:21
 -->
 <template>
     <!-- 高级页面设计列表 -->
@@ -17,12 +17,13 @@
 </template>
 
 <script lang='ts'>
-import { Ref, ref, unref, onMounted, onBeforeMount, defineComponent, reactive, getCurrentInstance } from 'vue'
+import { Ref, ref, unref, onMounted, onBeforeMount, defineComponent, reactive } from 'vue'
 import tokenStorage from '@utils/tokenStorage/index'
 import $http from '@http'
 import seniorDesignList from '@components/seniorDesignList/index.vue'
 import seniorDesign from '@components/design/index.vue'
 import { Obj, CustComponentRef } from '@interface'
+import UUID from '@utils/uuid/index'
 
 interface DesignData {
     visible: boolean,
@@ -49,7 +50,7 @@ export default defineComponent({
         const userInfo:Ref<Obj> = ref({})
         // 是否展示
         const designData: DesignData = reactive({
-            visible: false,
+            visible: true,
             data: {}
         })
         // 列表ref
@@ -74,7 +75,6 @@ export default defineComponent({
             designData.visible = true
         }
 
-        const a = getCurrentInstance()
         // 关闭设计页面
         const closeDesign = (): void => {
             designData.visible = false
@@ -90,8 +90,7 @@ export default defineComponent({
             designData,
             seniorDesingListRef,
             createOrUpdate,
-            closeDesign,
-            a
+            closeDesign
         }
     }
 })

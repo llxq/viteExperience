@@ -1,5 +1,5 @@
 {
-  "name": "redcat-senior-design",
+  "name": "viteExperience",
   "version": "0.0.0",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev vite",

@@ -12,3 +12,9 @@ declare module '*.vue' {
 // 增加类型 (为了处理类型可能为null的，统一定义)
 // Nullable<string> = string | null
 declare type Nullable<T> = T | null;
+
+// 定义类型
+declare interface Window {
+    msCrypto: Crypto,
+    new(): Crypto
+}

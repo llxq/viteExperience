@@ -21,7 +21,7 @@
                 <div v-else class="name-edit">
                     <el-input
                         v-focus
-                        v-input-select
+                        v-select
                         v-model="editName"
                         placeholder="请输入"
                         clearable
